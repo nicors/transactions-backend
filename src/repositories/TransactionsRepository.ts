@@ -27,7 +27,7 @@ class TransactionsRepository {
 
   public getBalance(): Balance {
     const balance = this.transactions.reduce(
-      (accumulator, transaction) => {
+      (accumulator: Balance, transaction: Transaction) => {
         switch (transaction.type) {
           case 'income':
             accumulator.income += transaction.value;
@@ -38,7 +38,6 @@ class TransactionsRepository {
             accumulator.total -= transaction.value;
             break;
           default:
-            throw Error('Wrong type of transaction');
         }
         return accumulator;
       },
