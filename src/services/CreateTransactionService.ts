@@ -21,8 +21,8 @@ class CreateTransactionService {
       throw Error('Invalid type of transaction');
 
     if (type === 'outcome') {
-      const balance = this.transactionsRepository.getBalance();
-      if (balance.total < value) {
+      const { total } = this.transactionsRepository.getBalance();
+      if (total < value) {
         throw Error('You don´t have enough money');
       }
     }
